@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Legal Compliance Flowchart – Copeland v. Weinstein</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --bg-card: #ffffff;
+      --text-main: #1f2933;
+      --text-muted: #6b7280;
+      --border-subtle: #e5e7eb;
+      --accent: #2563eb;        /* main blue accent */
+      --accent-soft: #dbeafe;
+      --good: #15803d;          /* “what should have happened” heading */
+      --good-soft: #dcfce7;
+      --warn: #b91c1c;          /* “what actually happened” heading */
+      --warn-soft: #fee2e2;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
+      --radius-xl: 1.5rem;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e0ecff 0, #f5f7fb 45%, #f9fafb 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3.5rem;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: conic-gradient(from 210deg, #1d4ed8, #22c55e, #0ea5e9, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-text-main {
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .brand-text-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .chip {
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .chip span.icon {
+      font-size: 0.9rem;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.1fr);
+      gap: 2.25rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 860px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.02), rgba(15, 23, 42, 0.09));
+      border-radius: var(--radius-xl);
+      padding: 1.6rem 1.6rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 0.25rem 0.85rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      font-size: 0.75rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-pill span.icon {
+      font-size: 1.1rem;
+    }
+
+    .hero-title {
+      font-size: 1.55rem;
+      line-height: 1.25;
+      font-weight: 720;
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-subtitle {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      max-width: 36rem;
+    }
+
+    .hero-subtitle strong {
+      color: #0f172a;
+    }
+
+    .hero-tagline {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-tagline span.bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    .photo-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: var(--radius-xl);
+      padding: 1.1rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+      position: relative;
+    }
+
+    .photo-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .photo-label span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .photo-frame {
+      border-radius: 1.1rem;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: #0b1120;
+      max-height: 230px;
+      display: flex;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .photo-caption {
+      margin-top: 0.55rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .photo-caption strong {
+      color: #0f172a;
+    }
+
+    .timeline-wrapper {
+      margin-top: 2.3rem;
+    }
+
+    .timeline-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: flex-end;
+      margin-bottom: 1.2rem;
+    }
+
+    .timeline-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .timeline-title {
+      font-size: 1.05rem;
+      font-weight: 650;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #0f172a;
+    }
+
+    .timeline-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .legend {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.8);
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+    }
+
+    .legend-dot.good {
+      background: var(--good);
+    }
+
+    .legend-dot.warn {
+      background: var(--warn);
+    }
+
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    .timeline-list::before {
+      content: "";
+      position: absolute;
+      left: 0.45rem;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), rgba(148, 163, 184, 0.2));
+    }
+
+    .step {
+      position: relative;
+    }
+
+    .step-badge {
+      position: absolute;
+      left: -1.35rem;
+      top: 0.1rem;
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 999px;
+      background: #0f172a;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 650;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.4);
+    }
+
+    .step-content {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 720px) {
+      .step-content {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .step-label {
+      font-size: 0.9rem;
+      font-weight: 640;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #0f172a;
+      margin-bottom: 0.55rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .step-label span.emoji {
+      font-size: 1.1rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 1rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+    }
+
+    .card-heading {
+      font-size: 0.82rem;
+      font-weight: 650;
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .card-heading.good {
+      color: var(--good);
+    }
+
+    .card-heading.warn {
+      color: var(--warn);
+    }
+
+    .card-tagline {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .card-body {
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: #111827;
+    }
+
+    .card-body p {
+      margin: 0.3rem 0;
+    }
+
+    .card-body p:first-child {
+      margin-top: 0;
+    }
+
+    .card-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .card.good {
+      background: linear-gradient(165deg, var(--good-soft), #ffffff);
+    }
+
+    .card.warn {
+      background: linear-gradient(165deg, var(--warn-soft), #ffffff);
+    }
+
+    .footer-actions {
+      margin-top: 2.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.85rem;
+      font-weight: 550;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 10% 0, #3b82f6, #1d4ed8);
+      color: white;
+      border-color: rgba(37, 99, 235, 0.8);
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(148, 163, 184, 0.7);
+      color: #111827;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn span.icon {
+      font-size: 1rem;
+    }
+
+    .footnote {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-mark">KC</div>
+        <div>
+          <div class="brand-text-main">Copeland Law Texas</div>
+          <div class="brand-text-sub">Fair Housing · Disability Rights · Mold Exposure</div>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <div class="chip">
+          <span class="icon">⚖️</span>
+          Legal Compliance Flowchart
+        </div>
+        <div class="chip">
+          <span class="icon">🧩</span>
+          FHA &amp; ADA Accommodation Timeline
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT: HERO COPY -->
+      <section class="hero-card">
+        <div class="hero-pill">
+          <span class="icon">📊</span>
+          What the law required vs. what actually happened
+        </div>
+
+        <h1 class="hero-title">
+          Legal Compliance Flowchart – Copeland v. Weinstein
+        </h1>
+
+        <p class="hero-subtitle">
+          This timeline compares <strong>what should have happened</strong> under
+          the Fair Housing Act, Texas Fair Housing Act, ADA, § 504, and Texas
+          Property Code to <strong>what actually occurred</strong> after my home was
+          professionally declared unfit for human occupancy.
+        </p>
+
+        <div class="hero-tagline">
+          <span class="bullet"></span>
+          Each step highlights where lawful accommodation duties stopped and retaliation began.
+        </div>
+      </section>
+
+      <!-- RIGHT: PHOTO / EVIDENCE VISUAL -->
+      <aside class="photo-card">
+        <div class="photo-label">
+          <span class="dot"></span>
+          Evidence Snapshot
+        </div>
+        <div class="photo-frame">
+          <!-- Update the src to match whatever path you’re using in your repo -->
+          <img src="assets/2025.12.4PhotoofApt2145.JPG" alt="Photograph related to Unit 2145 mold conditions" />
+        </div>
+        <p class="photo-caption">
+          <strong>Unit 2145 – Condemned</strong><br />
+          BioTex Inspections formally deemed the apartment “unfit for human occupancy”
+          after finding extensive mold and moisture damage.
+        </p>
+      </aside>
+    </main>
+
+    <!-- TIMELINE -->
+    <section class="timeline-wrapper">
+      <div class="timeline-header">
+        <div class="timeline-header-left">
+          <div class="timeline-title">Step-by-Step Compliance Timeline</div>
+          <div class="timeline-subtitle">
+            Reading left to right: what the law or best practices require vs. what happened in my case.
+          </div>
+        </div>
+        <div class="legend">
+          <div class="legend-item">
+            <span class="legend-dot good"></span>
+            Lawful baseline – what should have happened
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot warn"></span>
+            Actual conduct – what Weinstein and its insurer did
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-list">
+
+        <!-- STEP 1 -->
+        <article class="step">
+          <div class="step-badge">1</div>
+          <div class="step-label">
+            <span class="emoji">🏠</span>
+            Step 1 – Hazard Confirmed
+          </div>
+
+          <div class="step-content">
+            <div class="card good">
+              <div class="card-heading good">What should have happened</div>
+              <div class="card-tagline">Unit condemned → taken out of service</div>
+              <div class="card-body">
+                <p>
+                  Once a licensed mold assessor or inspector finds a unit unfit for human occupancy
+                  due to mold and moisture, the unit should be taken out of service.
+                </p>
+                <p>
+                  The landlord and its insurer should accept that the unit is unsafe and plan around that reality,
+                  including relocation, licensed remediation, and safe handling of contents.
+                </p>
+              </div>
+            </div>
+
+            <div class="card warn">
+              <div class="card-heading warn">What actually happened</div>
+              <div class="card-tagline">Hazard acknowledged, then treated as temporary</div>
+              <div class="card-body">
+                <p>
+                  My unit was professionally deemed unfit for human occupancy.
+                </p>
+                <p>
+                  Weinstein and its insurer acknowledged serious issues, but instead of treating
+                  the unit as truly out of service and planning for safe, ongoing housing, they
+                  treated the situation as temporary.
+                </p>
+                <p>
+                  They cut off housing entirely on October 27, 2025, while contamination remained unresolved.
+                  This set the stage for constructive eviction and left a disabled tenant without any safe place to live.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- STEP 2 -->
+        <article class="step">
+          <div class="step-badge">2</div>
+          <div class="step-label">
+            <span class="emoji">♿</span>
+            Step 2 – Disability &amp; Accommodation Request
+          </div>
+
+          <div class="step-content">
+            <div class="card good">
+              <div class="card-heading good">What should have happened</div>
+              <div class="card-tagline">Interactive process under FHA &amp; ADA</div>
+              <div class="card-body">
+                <p>
+                  When a disabled tenant notifies a housing provider that the unit is unsafe and requests help,
+                  that request must be treated as a reasonable accommodation request under the Fair Housing Act
+                  and Texas Fair Housing Act.
+                </p>
+                <p>
+                  The provider should engage in a genuine interactive process to identify a reasonable accommodation,
+                  including exploring relocation, extended stays, or comparable safe housing.
+                </p>
+              </div>
+            </div>
+
+            <div class="card warn">
+              <div class="card-heading warn">What actually happened</div>
+              <div class="card-tagline">Accommodation request treated as a nuisance</div>
+              <div class="card-body">
+                <p>
+                  I repeatedly informed Weinstein of my disabilities and the medical impact of the mold,
+                  and I provided supporting documentation.
+                </p>
+                <p>
+                  Instead of engaging in a meaningful interactive process, Weinstein moved toward non-renewal,
+                  litigation, and ultimately cutting off housing.
+                </p>
+                <p>
+                  A request for safe housing in this context is not a “favor” – it is a request for a reasonable
+                  accommodation. Ignoring or resisting that request is an ongoing fair-housing problem,
+                  not just a lease issue.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- STEP 3 -->
+        <article class="step">
+          <div class="step-badge">3</div>
+          <div class="step-label">
+            <span class="emoji">🏨</span>
+            Step 3 – Temporary Housing
+          </div>
+
+          <div class="step-content">
+            <div class="card good">
+              <div class="card-heading good">What should have happened</div>
+              <div class="card-tagline">Continuity of safe housing</div>
+              <div class="card-body">
+                <p>
+                  When a unit is uninhabitable for a disabled tenant, a reasonable accommodation can include
+                  medically safe, ADA-compliant, comparable temporary housing—such as a furnished extended-stay
+                  that allows lying flat, managing symptoms, basic kitchen access, and accommodation of children
+                  and assistance animals.
+                </p>
+                <p>
+                  Temporary housing should continue while the original unit remains unfit or until genuinely
+                  comparable, safe housing is offered.
+                </p>
+              </div>
+            </div>
+
+            <div class="card warn">
+              <div class="card-heading warn">What actually happened</div>
+              <div class="card-tagline">Housing support cut off midstream</div>
+              <div class="card-body">
+                <p>
+                  Tokio arranged temporary housing for a period, recognizing my unit was not livable.
+                </p>
+                <p>
+                  On October 27, 2025, that housing was cut off even though the original unit remained unfit and
+                  remediation/contents issues were unresolved.
+                </p>
+                <p>
+                  Since then, I have been effectively homeless, despite ongoing disability-related needs.
+                  Cutting off housing midstream, while the original unit is still unsafe, is the opposite of a
+                  reasonable accommodation and turns a partial attempt to comply into an ongoing failure to accommodate.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- STEP 4 -->
+        <article class="step">
+          <div class="step-badge">4</div>
+          <div class="step-label">
+            <span class="emoji">📦</span>
+            Step 4 – Contents &amp; Mold Compliance
+          </div>
+
+          <div class="step-content">
+            <div class="card good">
+              <div class="card-heading good">What should have happened</div>
+              <div class="card-tagline">Licensed, transparent handling of belongings</div>
+              <div class="card-body">
+                <p>
+                  Mold protocols must be carried out by or under the supervision of properly licensed mold
+                  remediation professionals.
+                </p>
+                <p>
+                  A tenant's belongings should be inventoried, triaged (salvageable vs. non-salvageable),
+                  and handled consistent with the protocol and state law, with clear communication to the tenant.
+                </p>
+              </div>
+            </div>
+
+            <div class="card warn">
+              <div class="card-heading warn">What actually happened</div>
+              <div class="card-tagline">Unlicensed handling &amp; risk of spoliation</div>
+              <div class="card-body">
+                <p>
+                  Most of my belongings were handed to Reign Restoration, which does not appear to hold a Texas
+                  mold remediation license, despite a protocol requiring licensed professionals.
+                </p>
+                <p>
+                  I have no complete inventory, no clear explanation of what has been done to my contents under
+                  the protocol, and no timeline for licensed compliance or safe retrieval/decision-making.
+                </p>
+                <p>
+                  My property and evidence are at continuing risk of spoliation and mishandling, and the protocol
+                  Plaintiffs rely on is not being followed in a way that complies with Texas law.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- STEP 5 -->
+        <article class="step">
+          <div class="step-badge">5</div>
+          <div class="step-label">
+            <span class="emoji">⚖️</span>
+            Step 5 – Use of the Courts
+          </div>
+
+          <div class="step-content">
+            <div class="card good">
+              <div class="card-heading good">What should have happened</div>
+              <div class="card-tagline">Courts as enforcers of non-waivable rights</div>
+              <div class="card-body">
+                <p>
+                  Courts should not be used as a vehicle to sidestep non-waivable statutory duties under the FHA,
+                  TFHA, ADA, § 504, or Texas Property Code.
+                </p>
+                <p>
+                  Requests for rent, possession, and scheduling should account for a landlord's fair-housing
+                  obligations to a disabled tenant from an uninhabitable unit and should ensure accommodations,
+                  not punish the tenant for asserting rights.
+                </p>
+              </div>
+            </div>
+
+            <div class="card warn">
+              <div class="card-heading warn">What actually happened</div>
+              <div class="card-tagline">Leverage built on ignoring accommodation duties</div>
+              <div class="card-body">
+                <p>
+                  While these federal and state disability and fair-housing duties have been repeatedly raised,
+                  Plaintiffs continue to seek possession, rent, and scheduling orders as if this were a simple lease dispute.
+                </p>
+                <p>
+                  My motions for accommodations, referral to enforcement authorities, and appointment of counsel
+                  have not yet been addressed, while I remain without stable, medically appropriate housing.
+                </p>
+                <p>
+                  This creates the risk that the Court will be used to enforce leverage that depends on ignoring
+                  fair-housing and disability obligations rather than ensuring they are honored.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- FOOTER BUTTONS -->
+    <section class="footer-actions">
+      <a href="index.html" class="btn btn-primary">
+        <span class="icon">⬅️</span>
+        Back to Case Overview
+      </a>
+
+      <a href="#" class="btn btn-ghost">
+        <span class="icon">📄</span>
+        Download as PDF (coming soon)
+      </a>
+
+      <a href="master_timeline.html" class="btn btn-ghost">
+        <span class="icon">⏱️</span>
+        View Master Chronological Timeline
+      </a>
+    </section>
+
+    <div class="footnote">
+      This page is for informational and advocacy purposes and does not create an attorney-client relationship.
+    </div>
+  </div>
+</body>
+</html>
