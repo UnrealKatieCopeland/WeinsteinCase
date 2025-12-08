@@ -8,116 +8,248 @@
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #f4f7f5;
+      background-color: #f2f6f3;
       margin: 0;
       padding: 0;
-      color: #24332b;
+      color: #1f2c25;
+      font-size: 16px;
+      line-height: 1.7;
     }
+
     header {
-      background-color: #d8e4dc;
-      padding: 26px 18px;
+      background: linear-gradient(135deg, #d7e6dd, #c3d7cb);
+      padding: 26px 18px 28px;
       text-align: center;
-      border-bottom: 2px solid #c3d3c9;
+      border-bottom: 2px solid #b7cabf;
     }
+
     header h1 {
       margin: 0;
-      font-size: 28px;
-      color: #1f342b;
+      font-size: 30px;
+      color: #122019;
     }
+
     header p {
       margin: 8px 0 0;
-      font-size: 15px;
-      color: #46584f;
+      font-size: 16px;
+      color: #42554b;
     }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      padding: 10px 14px;
+      min-width: 170px;
+      border: 1px solid #c9d9cf;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      font-size: 14px;
+      color: #223329;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+      color: #163323;
+    }
+
     .container {
-      max-width: 900px;
+      max-width: 950px;
       margin: 30px auto 40px;
       padding: 22px 20px 30px;
       background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      border-radius: 12px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.07);
     }
+
     h2 {
-      font-size: 21px;
-      margin-top: 26px;
+      font-size: 24px;
+      margin-top: 28px;
       margin-bottom: 10px;
-      color: #274135;
+      color: #1b3227;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+
     h3 {
-      font-size: 18px;
+      font-size: 19px;
       margin-top: 18px;
       margin-bottom: 6px;
-      color: #2f4a3d;
+      color: #244133;
     }
+
     p {
-      line-height: 1.6;
-      margin-top: 6px;
+      margin-top: 4px;
       margin-bottom: 10px;
-      font-size: 15px;
     }
+
     ul {
       margin-top: 4px;
       margin-bottom: 12px;
-      padding-left: 20px;
-      font-size: 15px;
+      padding-left: 22px;
     }
+
     li {
       margin-bottom: 4px;
     }
+
     .tagline {
       font-style: italic;
-      color: #4b5c54;
+      color: #4f6358;
       margin-bottom: 14px;
+      font-size: 15px;
     }
+
     .note {
-      font-size: 13px;
-      color: #6a7c73;
-      border-left: 3px solid #a9beb1;
-      padding-left: 10px;
+      font-size: 14px;
+      color: #53665b;
+      border-left: 3px solid #9fbaaa;
+      padding-left: 11px;
+      padding-top: 5px;
+      padding-bottom: 5px;
       margin-bottom: 18px;
+      background: #f5faf7;
+      border-radius: 4px;
     }
+
     .highlight-box {
       background: #f0f5f2;
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 10px 12px;
       margin-bottom: 12px;
+      border: 1px solid #d0ded4;
+    }
+
+    .section-icon {
+      font-size: 22px;
+    }
+
+    .photo-row {
+      margin: 18px 0 8px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .photo-row figure {
+      margin: 0;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .photo-row img {
+      max-width: 100%;
+      border-radius: 10px;
+      border: 1px solid #c9d5cd;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.09);
+    }
+
+    .photo-row figcaption {
+      margin-top: 6px;
+      font-size: 13px;
+      color: #5b6d64;
+    }
+
+    details {
+      border-radius: 8px;
+      margin: 8px 0 10px;
       border: 1px solid #d1ded5;
+      background: #f7fbf8;
     }
+
+    summary {
+      cursor: pointer;
+      padding: 8px 11px;
+      font-weight: 600;
+      color: #1e382a;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::before {
+      content: "▸ ";
+      font-size: 13px;
+      color: #355341;
+    }
+
+    details[open] summary::before {
+      content: "▾ ";
+    }
+
+    details > div {
+      padding: 4px 12px 10px;
+      font-size: 15px;
+    }
+
     .footer {
-      margin-top: 24px;
-      font-size: 14px;
-      color: #4f6157;
+      margin-top: 26px;
+      font-size: 15px;
+      color: #41544a;
     }
+
     .signature {
       margin-top: 18px;
       font-size: 15px;
     }
+
     .case-info {
       margin-top: 6px;
       font-size: 14px;
-      color: #4b5c54;
+      color: #526259;
     }
+
     a {
-      color: #225c3d;
+      color: #1d5b3b;
       text-decoration: none;
       font-weight: 600;
     }
+
     a:hover {
       text-decoration: underline;
     }
+
     .button-link {
       display: inline-block;
       margin-top: 10px;
-      padding: 8px 14px;
-      border-radius: 6px;
-      border: 1px solid #4f6f5d;
+      padding: 9px 16px;
+      border-radius: 7px;
+      border: 1px solid #456856;
       text-decoration: none;
       font-size: 14px;
-      color: #1f342b;
-      background: #e4efe8;
+      color: #163024;
+      background: #e3efe8;
+      font-weight: 600;
     }
+
     .button-link:hover {
-      background: #d3e2da;
+      background: #d1e3da;
+    }
+
+    @media (max-width: 640px) {
+      header h1 {
+        font-size: 24px;
+      }
+      .container {
+        margin: 18px 10px 30px;
+        padding: 16px 14px 22px;
+      }
+      h2 {
+        font-size: 21px;
+      }
+      body {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
@@ -126,7 +258,22 @@
 
 <header>
   <h1>⚖️ The Reality of Weinstein v. Copeland</h1>
-  <p>For the Court – Summary of What This Case Actually Involves</p>
+  <p>Organized summary for the Court – what this case actually involves</p>
+
+  <div class="hero-stats">
+    <div class="stat-card">
+      <strong>Disabled Tenant</strong>
+      TBI, MCAS, and related conditions affecting stamina, immunity, and cognition.
+    </div>
+    <div class="stat-card">
+      <strong>Homeless Since July 14</strong>
+      Hotel through Oct 27, then couch-surfing while litigating pro se.
+    </div>
+    <div class="stat-card">
+      <strong>All Property Removed</strong>
+      Contents taken Sept 22–26 without prior court order or inventory.
+    </div>
+  </div>
 </header>
 
 <div class="container">
@@ -134,12 +281,12 @@
   <p class="tagline"><strong>For Judge Chupp and Court Coordinator</strong></p>
 
   <div class="note">
-    This summary is intended to organize information already in the record and to explain why repair, safety,
-    displacement, and disability accommodations are central to this case. It is not offered as evidence itself;
-    all statements are supported by filings, exhibits, and reports previously provided to the Court.
+    This page is intended to organize information already in the record and to explain why repair, safety,
+    displacement, and disability accommodations are central to this case. It is not offered as stand-alone evidence;
+    each point is supported by filings, reports, and exhibits previously or concurrently provided to the Court.
   </div>
 
-  <h2>📋 The Basic Facts</h2>
+  <h2><span class="section-icon">📋</span> Basic Facts</h2>
 
   <div class="highlight-box">
     <h3>Who</h3>
@@ -154,80 +301,107 @@
     indicate that all contents were contaminated.
   </p>
 
-  <h3>Evidence</h3>
+  <div class="photo-row">
+    <figure>
+      <img src="2025.12.4PhotoofApt2145.JPG" alt="Photo of Unit 2145 documenting visible damage and conditions">
+      <figcaption>Unit 2145 – conditions documented in mid-2025 (photo previously provided as an exhibit).</figcaption>
+    </figure>
+  </div>
+
+  <h3>Evidence Snapshot</h3>
   <ul>
-    <li>BioTex inspection report (June 18, 2025).</li>
-    <li>Dallas Mold Consultants protocol (September 8, 2025) noting heavy mold and contamination of contents.</li>
-    <li>Subsequent correspondence, notices, and motions filed in this Court and in JP Court.</li>
+    <li>BioTex inspection report (June 18, 2025) – unit deemed unfit for occupancy.</li>
+    <li>Dallas Mold Consultants protocol (September 8, 2025) – heavy mold, “all contents contaminated.”</li>
+    <li>Subsequent correspondence, notices, and motions filed in this Court and JP Court.</li>
   </ul>
 
   <h3>Current Status</h3>
   <ul>
-    <li>Defendant has been effectively homeless since July 14 (hotel until October 27, then couch-surfing).</li>
-    <li>All property was removed from the unit between September 22–26 (no prior court order and no inventory provided).</li>
+    <li>Defendant has been effectively homeless since July 14 (hotel through October 27, then staying with others).</li>
+    <li>All property was removed between September 22–26; no prior court order and no formal inventory provided.</li>
     <li>Medical equipment (including CPAP), medications, clothing, and other essentials were among the removed items.</li>
-    <li>Defendant is pro se, disabled, and attempting to litigate complex civil-rights and property claims while without stable housing.</li>
+    <li>Defendant is pro se and disabled, attempting to litigate complex civil-rights and property claims without stable housing.</li>
   </ul>
 
-  <h2>🔥 Five Key “Smoking Gun” Issues</h2>
+  <h2><span class="section-icon">🔥</span> Five Key “Smoking Gun” Issues</h2>
 
-  <p>These are the core events that explain why the case is not frivolous and why relief is being sought under civil-rights and disability statutes.</p>
+  <p>These are the core events that explain why this case raises serious repair, civil-rights, and due-process concerns.</p>
 
-  <h3>1. Property Removed Before Any Court Order</h3>
-  <ul>
-    <li><strong>Sept 22–26:</strong> Reign Restoration removes essentially all contents from the apartment.</li>
-    <li><strong>Sept 19:</strong> TRO is filed asking for permission to remove property.</li>
-    <li><strong>Oct 16:</strong> Temporary injunction is granted.</li>
-  </ul>
-  <p>
-    Property removal occurred before the Court authorized such action. This implicates Texas Property Code
-    provisions governing exclusion/lockout and control of tenant property, in addition to civil conversion theories.
-  </p>
+  <details open>
+    <summary>🚨 1. Property Removed Before Any Court Order</summary>
+    <div>
+      <ul>
+        <li><strong>Sept 22–26:</strong> Reign Restoration removes essentially all contents from the apartment.</li>
+        <li><strong>Sept 19:</strong> TRO is filed asking for permission to remove property.</li>
+        <li><strong>Oct 16:</strong> Temporary injunction is granted.</li>
+      </ul>
+      <p>
+        Property removal occurred before the Court authorized such action. This implicates Texas Property Code
+        provisions governing exclusion/lockout and control of tenant property, in addition to civil-conversion theories.
+      </p>
+    </div>
+  </details>
 
-  <h3>2. Dallas Mold Report Not Disclosed for 49 Days</h3>
-  <ul>
-    <li><strong>Sept 8:</strong> Dallas Mold Consultants report created (“no equipment on site,” “all contents contaminated”).</li>
-    <li><strong>Sept 19, Oct 2, Oct 16:</strong> Three proceedings occur without disclosure of this report.</li>
-    <li><strong>Oct 27:</strong> Defendant obtains the report herself.</li>
-  </ul>
-  <p>
-    The Dallas Mold report undercuts the narrative that Defendant obstructed remediation and supports her position
-    regarding habitability and contamination. The timing and non-disclosure at critical hearings are central to her
-    fraud-on-the-court and due-process concerns.
-  </p>
+  <details>
+    <summary>📄 2. Dallas Mold Report Not Disclosed for 49 Days</summary>
+    <div>
+      <ul>
+        <li><strong>Sept 8:</strong> Dallas Mold Consultants report created (“no equipment on site,” “all contents contaminated”).</li>
+        <li><strong>Sept 19, Oct 2, Oct 16:</strong> Three proceedings occur without disclosure of this report.</li>
+        <li><strong>Oct 27:</strong> Defendant obtains the report herself.</li>
+      </ul>
+      <p>
+        The Dallas Mold report undercuts the narrative that Defendant obstructed remediation and supports her position
+        regarding habitability and contamination. The timing and non-disclosure at critical hearings are central to her
+        fraud-on-the-court and due-process concerns.
+      </p>
+    </div>
+  </details>
 
-  <h3>3. Eleven-Day Coordination Between Insurance and Non-Renewal</h3>
-  <ul>
-    <li><strong>Aug 15:</strong> Insurance adjuster confirms housing will continue “until remediation is completed.”</li>
-    <li><strong>Aug 26 (11 days later):</strong> Non-renewal notice is issued, creating an October 26 lease end date.</li>
-    <li><strong>Oct 27:</strong> Housing is terminated one day after lease expiration.</li>
-  </ul>
-  <p>
-    The close timing between the unconditional housing assurance and the non-renewal that later becomes the basis
-    for ending housing is at the heart of Defendant’s bad faith, retaliation, and coordination arguments.
-  </p>
+  <details>
+    <summary>🧩 3. Eleven-Day Coordination Between Insurance and Non-Renewal</summary>
+    <div>
+      <ul>
+        <li><strong>Aug 15:</strong> Insurance adjuster confirms housing will continue “until remediation is completed.”</li>
+        <li><strong>Aug 26 (11 days later):</strong> Non-renewal notice is issued, creating an October 26 lease end date.</li>
+        <li><strong>Oct 27:</strong> Housing is terminated one day after the lease expiration.</li>
+      </ul>
+      <p>
+        The close timing between the unconditional housing assurance and the non-renewal that later becomes the basis
+        for ending housing is at the heart of Defendant’s bad-faith, retaliation, and coordination arguments.
+      </p>
+    </div>
+  </details>
 
-  <h3>4. Misstated Hotel Offer Date in Later Filing</h3>
-  <ul>
-    <li>Declaration asserts that a hotel was “offered July 7.”</li>
-    <li>Record reflects: ServPro visit did not occur until July 11, and hotel check-in was July 14.</li>
-  </ul>
-  <p>
-    Under the Property Code, the repair-and-remedy deadline tied to the June 27 demand was July 4. The later date
-    in the declaration obscures the actual delay and is relevant to Defendant’s statutory repair claims.
-  </p>
+  <details>
+    <summary>📝 4. Misstated Hotel Offer Date in Later Filing</summary>
+    <div>
+      <ul>
+        <li>A declaration asserts that a hotel was “offered July 7.”</li>
+        <li>The record reflects: ServPro visit did not occur until July 11, and hotel check-in was July 14.</li>
+      </ul>
+      <p>
+        Under the Property Code, the repair-and-remedy deadline tied to the June 27 demand was July 4. The later date
+        in the declaration obscures the actual delay and is relevant to Defendant’s statutory repair claims.
+      </p>
+    </div>
+  </details>
 
-  <h3>5. Unauthorized Entries After Spoliation/Preservation Demand</h3>
-  <ul>
-    <li><strong>Aug 17:</strong> Defendant sends a preservation/spoliation letter requesting that entries cease and evidence be preserved.</li>
-    <li><strong>Aug 20:</strong> Another entry occurs three days later without Defendant’s consent or presence.</li>
-  </ul>
-  <p>
-    These events are central to her claims of improper entry, retaliation, and spoliation. Each post-demand entry
-    implicates Property Code §92.0081 and supports her request for a preservation/inventory order.
-  </p>
+  <details>
+    <summary>🔐 5. Unauthorized Entries After Preservation/Spoliation Demand</summary>
+    <div>
+      <ul>
+        <li><strong>Aug 17:</strong> Defendant sends a preservation/spoliation letter requesting that entries cease and evidence be preserved.</li>
+        <li><strong>Aug 20:</strong> Another entry occurs three days later without Defendant’s consent or presence.</li>
+      </ul>
+      <p>
+        These events are central to her claims of improper entry, retaliation, and spoliation. Each post-demand entry
+        implicates Property Code § 92.0081 and supports her request for a preservation/inventory order.
+      </p>
+    </div>
+  </details>
 
-  <h2>📅 Timeline of This Court’s Proceedings</h2>
+  <h2><span class="section-icon">📅</span> Timeline of This Court’s Proceedings</h2>
 
   <ul>
     <li><strong>September 29, 2025 – Emergency Motion (Property Removal):</strong> Filed after loss of access to property. Status: not ruled upon.</li>
@@ -236,7 +410,7 @@
     <li><strong>October 29, 2025 – Emergency Motion to Vacate:</strong> Filed to present new evidence and concerns. Status: denied without written findings.</li>
     <li><strong>November–December 2025 – ADA Accommodation Requests:</strong> Multiple written requests for disability accommodations, including modified hearing format. Status: no separate hearing held on the ADA motion.</li>
     <li><strong>December 3, 2025 – First Amended Motion for Appointment of Counsel:</strong> Filed with documentation of disability, complexity, and prior denials. Status: hearing not yet set.</li>
-    <li><strong>December 9, 2025 – JP Court Hearing (Repair & Remedy):</strong> Parallel proceeding on related Property Code violations.</li>
+    <li><strong>December 9, 2025 – JP Court Hearing (Repair &amp; Remedy):</strong> Parallel proceeding on related Property Code violations.</li>
   </ul>
 
   <p>
@@ -244,7 +418,7 @@
     obligations under the Texas Property Code.
   </p>
 
-  <h2>🏥 Disability and ADA Accommodation Reality</h2>
+  <h2><span class="section-icon">🏥</span> Disability and ADA Accommodation Reality</h2>
 
   <h3>Diagnosed Conditions</h3>
   <ul>
@@ -269,17 +443,17 @@
   <p>
     The practical problem is a Catch-22: Defendant must participate in live hearings to obtain accommodations, but
     her disability is precisely what limits her ability to participate in that format. Proceeding without appropriate
-    accommodations risks undermining due process protections.
+    accommodations risks undermining due-process protections.
   </p>
 
-  <h2>💰 What Is at Stake</h2>
+  <h2><span class="section-icon">💰</span> What Is at Stake</h2>
 
   <p>This is more than a standard landlord–tenant dispute. The claims implicate:</p>
   <ul>
     <li>Fair Housing Act (FHA) disability discrimination and failure to accommodate.</li>
     <li>Americans with Disabilities Act (ADA) requirements for reasonable accommodations in court access.</li>
     <li>Texas Property Code repair-and-remedy and retaliation provisions.</li>
-    <li>Insurance bad faith under Texas Insurance Code §541.060.</li>
+    <li>Insurance bad faith under Texas Insurance Code § 541.060.</li>
     <li>Conversion, constructive eviction, and spoliation of evidence.</li>
   </ul>
 
@@ -290,7 +464,7 @@
     considered.
   </p>
 
-  <h2>🎯 What Defendant Is Actually Requesting</h2>
+  <h2><span class="section-icon">🎯</span> What Defendant Is Actually Requesting</h2>
 
   <h3>1. Appointment of Counsel (FHA § 3613(c))</h3>
   <ul>
@@ -317,7 +491,7 @@
     <li>Request for a clear, court-supervised inventory and lawful handling consistent with contamination laws.</li>
   </ul>
 
-  <h2>📊 Why the Filings May Look Like “Emergency Spam”</h2>
+  <h2><span class="section-icon">📊</span> Why the Filings May Look Like “Emergency Spam”</h2>
 
   <p>From the Court’s perspective, it may appear that there is a pattern of repeated emergency filings. From Defendant’s perspective:</p>
 
@@ -333,7 +507,7 @@
     the need for emergency filings and allow the case to proceed in an orderly fashion.
   </p>
 
-  <h2>⚖️ Role of the JP Court Hearing</h2>
+  <h2><span class="section-icon">⚖️</span> Role of the JP Court Hearing</h2>
 
   <p>
     The JP Court repair-and-remedy case involves many of the same facts, parties, and alleged Property Code
@@ -341,7 +515,7 @@
   </p>
   <ul>
     <li>Provide an independent judicial finding on whether Weinstein met its repair obligations.</li>
-    <li>Confirm that Defendant’s claims have merit, supporting her request for appointed counsel.</li>
+    <li>Support the argument that Defendant’s claims have merit, reinforcing her request for appointed counsel.</li>
     <li>Create potential issue-preclusion effects that may streamline this Court’s later determinations.</li>
   </ul>
 
@@ -350,7 +524,7 @@
     scheduling deadlines—including expert and discovery deadlines—without counsel and without accommodations.
   </p>
 
-  <h2>📄 Bottom Line for the Court</h2>
+  <h2><span class="section-icon">📄</span> Bottom Line for the Court</h2>
 
   <p>This is not:</p>
   <ul>
