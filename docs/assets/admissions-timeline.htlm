@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weinstein Admissions & Timeline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f7f5;
+      --card-bg: #ffffff;
+      --accent: #4f6f52;
+      --accent-soft: #c9d7c8;
+      --accent-dark: #26412b;
+      --text-main: #1f2933;
+      --text-muted: #6b7280;
+      --border-soft: #e3e7e3;
+      --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.08);
+      --radius-xl: 18px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e4eee4 0, var(--bg) 40%, #f9fafb 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px 56px;
+    }
+
+    header {
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(79, 111, 82, 0.08);
+      color: var(--accent-dark);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      margin-top: 14px;
+      margin-bottom: 8px;
+      color: var(--accent-dark);
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      font-size: 0.96rem;
+      color: var(--text-muted);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 20px;
+      margin-top: 24px;
+      margin-bottom: 28px;
+    }
+
+    .hero-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-soft);
+    }
+
+    .hero-highlight {
+      font-size: 0.9rem;
+      color: var(--accent-dark);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .hero-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .hero-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .hero-list li::before {
+      content: "•";
+      color: var(--accent);
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .hero-pill span {
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      border-radius: var(--radius-pill);
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-weight: 500;
+    }
+
+    .section {
+      margin-top: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-dark);
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .pill-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: rgba(79, 111, 82, 0.07);
+      color: var(--accent-dark);
+      margin-bottom: 6px;
+    }
+
+    .pill-label span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--accent-dark);
+    }
+
+    .card-body {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .card-body strong {
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    .card-footer {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: var(--accent-dark);
+      opacity: 0.9;
+    }
+
+    .table-wrapper {
+      margin-top: 10px;
+      overflow-x: auto;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      background: var(--card-bg);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 720px;
+      font-size: 0.82rem;
+    }
+
+    thead {
+      background: #e3ece3;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-dark);
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f7faf7;
+    }
+
+    tbody tr:hover {
+      background: #edf3ed;
+    }
+
+    .rfa-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(38, 65, 43, 0.09);
+      color: var(--accent-dark);
+      font-weight: 600;
+      font-size: 0.78rem;
+    }
+
+    .legal-tag {
+      display: inline-block;
+      padding: 2px 7px;
+      margin: 1px 3px 1px 0;
+      border-radius: var(--radius-pill);
+      background: rgba(79, 111, 82, 0.08);
+      color: var(--accent-dark);
+      font-size: 0.73rem;
+      white-space: nowrap;
+    }
+
+    /* Timeline */
+
+    .timeline-wrapper {
+      margin-top: 10px;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 18px;
+      margin-top: 12px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent-soft), rgba(79, 111, 82, 0.15));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 14px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -1px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(79, 111, 82, 0.15);
+    }
+
+    .timeline-date {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-dark);
+      margin-bottom: 2px;
+    }
+
+    .timeline-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      margin-bottom: 2px;
+    }
+
+    .timeline-body {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-body strong {
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    .timeline-tag-row {
+      margin-top: 4px;
+    }
+
+    .timeline-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      background: rgba(79, 111, 82, 0.08);
+      color: var(--accent-dark);
+      margin-right: 4px;
+      margin-top: 2px;
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 20px 14px 40px;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      header {
+        text-align: left;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="tag">
+        <span class="tag-dot"></span>
+        <span>Copeland v. Weinstein · Admissions Summary</span>
+      </div>
+      <h1>What Weinstein Admitted Under Oath</h1>
+      <p class="subtitle">
+        When confronted with straightforward Requests for Admission, Weinstein Management and its insurer made key admissions about housing, mold, disability, and retaliation. This page visually organizes those admissions and the timeline they fit into.
+      </p>
+    </header>
+
+    <section class="hero-grid">
+      <div class="hero-card">
+        <div class="hero-highlight">At a glance</div>
+        <ul class="hero-list">
+          <li>They admitted their own report called the unit <strong>“unfit for human occupancy.”</strong></li>
+          <li>They admitted hotel lodging stopped <strong>after</strong> they issued a nonrenewal notice.</li>
+          <li>They admitted they provided <strong>no alternative housing</strong> after cutting off lodging.</li>
+          <li>They treated disability-related requests as “not relevant,” revealing their discriminatory posture.</li>
+        </ul>
+        <div class="hero-pill">
+          <span>Constructive Eviction</span>
+          <span>FHA &amp; ADA</span>
+          <span>Retaliation</span>
+          <span>Habitability</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-highlight">How to read this page</div>
+        <p class="card-body">
+          First, review the <strong>Admissions Snapshot</strong> to see the biggest points they conceded. Then use the
+          <strong>Admissions Table</strong> for precise RFA-by-RFA detail. Finally, scroll through the <strong>Timeline</strong> to understand
+          how notice, mold findings, and housing decisions unfolded over time.
+        </p>
+      </div>
+    </section>
+
+    <!-- Admissions Snapshot -->
+    <section class="section" id="snapshot">
+      <div class="section-header">
+        <h2>Admissions Snapshot</h2>
+        <div class="section-subtitle">Key concessions that drive constructive eviction and FHA/ADA liability.</div>
+      </div>
+      <div class="card card-grid">
+        <div>
+          <div class="pill-label"><span></span> Promise & Withdrawal</div>
+          <div class="card-title">Hotel Lodging Tied to Remediation — Then Cut Off After Nonrenewal</div>
+          <div class="card-body">
+            Weinstein admitted their insurer told Kathryn her hotel housing would continue until remediation was complete, then later cut it off <strong>after</strong> issuing a nonrenewal notice. This supports retaliation and constructive eviction.
+          </div>
+          <div class="card-footer">RFAs 1–2 · Aug. 15 email · Lodging ended 10/26/25</div>
+        </div>
+        <div>
+          <div class="pill-label"><span></span> Habitability</div>
+          <div class="card-title">Their Own Report: “Unfit for Human Occupancy”</div>
+          <div class="card-body">
+            Weinstein admitted that the licensed mold assessment they ordered described the unit as <strong>unfit for human occupancy</strong>, confirming uninhabitable conditions while they withdrew housing.
+          </div>
+          <div class="card-footer">RFA 5 · BioTex Report (6/18/25)</div>
+        </div>
+        <div>
+          <div class="pill-label"><span></span> No Accommodation</div>
+          <div class="card-title">No Alternative Housing Provided</div>
+          <div class="card-body">
+            After terminating hotel coverage, Weinstein admits they offered <strong>no alternative housing or comparable accommodation</strong> despite the documented condition of the unit and disability-related notices.
+          </div>
+          <div class="card-footer">RFA 10 · Lodging stopped after 10/26/25</div>
+        </div>
+        <div>
+          <div class="pill-label"><span></span> Disability & Retaliation</div>
+          <div class="card-title">Disability Requests Treated as “Not Relevant”</div>
+          <div class="card-body">
+            Instead of engaging in the interactive process, Weinstein objected that disability-related requests and complaints were “not relevant” and “improper,” reinforcing the pattern of discrimination and retaliation under the FHA and ADA.
+          </div>
+          <div class="card-footer">RFAs 6–9 · ADA/FHA complaints and medical notices</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admissions Table -->
+    <section class="section" id="table">
+      <div class="section-header">
+        <h2>Admissions Table</h2>
+        <div class="section-subtitle">RFA-by-RFA breakdown with linked legal significance.</div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>RFA</th>
+              <th>Key Fact Sought</th>
+              <th>Response Summary</th>
+              <th>Legal Significance</th>
+              <th>Evidence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="rfa-chip">1</span></td>
+              <td>Insurer confirmed hotel lodging would continue until remediation was complete.</td>
+              <td>Objects, but <strong>admits</strong> Aug. 15 email stated this.</td>
+              <td>
+                <span class="legal-tag">Constructive Eviction</span>
+                <span class="legal-tag">Reliance / Damages</span>
+                <span class="legal-tag">Accommodation Duty</span>
+              </td>
+              <td>Aug. 15, 2025 email from Amye Brochstein</td>
+            </tr>
+            <tr>
+              <td><span class="rfa-chip">2</span></td>
+              <td>Hotel lodging was later withdrawn after nonrenewal notice.</td>
+              <td>Objects, but <strong>admits</strong> lodging ceased after 10/26/25 (post 8/26/25 notice).</td>
+              <td>
+                <span class="legal-tag">FHA Retaliation</span>
+                <span class="legal-tag">Causation</span>
+              </td>
+              <td>Nonrenewal notice + lodging termination timeline</td>
+            </tr>
+            <tr>
+              <td><span class="rfa-chip">3</span></td>
+              <td>Claims examiner was acting as insurer’s/landlord’s representative.</td>
+              <td><strong>Admitted.</strong></td>
+              <td>
+                <span class="legal-tag">Agency</span>
+                <span class="legal-tag">Vicarious Liability</span>
+              </td>
+              <td>Emails between Amye and Weinstein Management</td>
+            </tr>
+            <tr>
+              <td><span class="rfa-chip">4</span></td>
+              <td>Insurer/Weinstein communicated directly with Kathryn about lodging and remediation.</td>
+              <td>Objects, but <strong>admits</strong> staff communicated with Copeland.</td>
+              <td>
+                <span class="legal-tag">Notice</span>
+                <span class="legal-tag">Interactive Process</span>
+              </td>
+              <td>Email correspondence re: lodging & remediation</td>
+            </tr>
+            <tr>
+              <td><span class="rfa-chip">5</span></td>
+              <td>Unit was deemed “unfit for human occupancy.”</td>
+              <td>Objects, but <strong>admits</strong> BioTex report contains that language.</td>
+              <td>
+                <span class="legal-tag">Habitability</span>
+                <span class="legal-tag">Constructive Eviction</span>
+              </td>
+              <td>BioTex Report (June 18, 2025)</td>
+            </tr>
+            <tr>
+              <td><span class="rfa-chip">6</span></td>
+              <td>Insurer/Weinstein knew of physician-documented disabilities affected by mold exposure.</td>
+              <td>Refuses to admit; calls request “not relevant” and “speculative.”</td>
+              <td>
+                <span class="legal-tag">FHA / ADA Knowledge</span>
+                <span class="legal-tag">Discriminatory Posture</span>
+              </td>
+              <td>Disability notices & medical documentation</td>
+            </tr>
+            <tr>
+              <td><span class="rfa-chip">7</span></td>
+              <td>Withdrawal of lodging was based on nonrenewal rather than remediation completion.</td>
+              <td>Denied “as worded,” despite timeline admission in RFA 2.</td>
+              <td>
+                <span class="legal-tag">Inconsistency</span>
+                <span class="legal-tag">Bad Faith</span>
+              </td>
+              <td>Timeline of nonrenewal and lodging cutoff</td>
+            </tr>
+            <tr>
+              <td><span class="rfa-chip">8</span></td>
+              <td>Insurer discussed liability or litigation risk when deciding lodging.</td>
+              <td>Objects as “privileged” and “not relevant.” No privilege log.</td>
+              <td>
+                <span class="legal-tag">Privilege Log Required</span>
+                <span class="legal-tag">Insurance Bad Faith Context</span>
+              </td>
+              <td>Future privilege log & claims file</td>
+            </tr>
+            <tr>
+              <td><span class="rfa-chip">9</span></td>
+              <td>Insurer/Weinstein were aware of pending mold and ADA complaints when making lodging decisions.</td>
+              <td>Objects; says request “implies merit” and asserts privilege.</td>
+              <td>
+                <span class="legal-tag">Protected Activity</span>
+                <span class="legal-tag">Retaliatory Motive</span>
+              </td>
+              <td>ADA/FHA complaints and written accommodation requests</td>
+            </tr>
+            <tr>
+              <td><span class="rfa-chip">10</span></td>
+              <td>No alternative accommodation or comparable housing was offered after terminating hotel coverage.</td>
+              <td>Objects, but <strong>admits</strong> they ceased lodging and did not provide alternative housing.</td>
+              <td>
+                <span class="legal-tag">Failure to Accommodate</span>
+                <span class="legal-tag">Constructive Eviction</span>
+                <span class="legal-tag">Retaliation</span>
+              </td>
+              <td>Timeline of housing; absence of offers or alternatives</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section" id="timeline">
+      <div class="section-header">
+        <h2>Visual Timeline</h2>
+        <div class="section-subtitle">How notice, mold findings, and housing decisions unfolded over time.</div>
+      </div>
+
+      <div class="card timeline-wrapper">
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">March 5, 2025</div>
+            <div class="timeline-title">Initial Written Notice of Mold & Health Concerns</div>
+            <div class="timeline-body">
+              Kathryn submits formal written notice regarding mold, health impacts, and the need for safe housing and remediation.
+              <div class="timeline-tag-row">
+                <span class="timeline-tag">Notice</span>
+                <span class="timeline-tag">Health & Safety</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">June 18, 2025</div>
+            <div class="timeline-title">BioTex Report: “Unfit for Human Occupancy”</div>
+            <div class="timeline-body">
+              A licensed mold assessor retained by Weinstein issues a report declaring the unit <strong>unfit for human occupancy</strong>, confirming severe contamination and the need for licensed remediation.
+              <div class="timeline-tag-row">
+                <span class="timeline-tag">Habitability</span>
+                <span class="timeline-tag">Licensed Assessment</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">August 15, 2025</div>
+            <div class="timeline-title">Insurer Confirms Ongoing Hotel Lodging</div>
+            <div class="timeline-body">
+              Claims examiner Amye Brochstein emails Kathryn confirming that hotel lodging will continue while remediation is ongoing, creating a clear expectation of continued housing support.
+              <div class="timeline-tag-row">
+                <span class="timeline-tag">Accommodation Promise</span>
+                <span class="timeline-tag">Reliance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">August 26, 2025</div>
+            <div class="timeline-title">Nonrenewal Notice Issued</div>
+            <div class="timeline-body">
+              Despite knowledge of mold, disability, and the ongoing remediation process, Weinstein issues a nonrenewal notice, escalating pressure on Kathryn while she is displaced.
+              <div class="timeline-tag-row">
+                <span class="timeline-tag">Retaliation Trigger</span>
+                <span class="timeline-tag">Housing Instability</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">October 26, 2025</div>
+            <div class="timeline-title">Hotel Lodging Terminated</div>
+            <div class="timeline-body">
+              After the nonrenewal notice, Weinstein’s insurer terminates hotel coverage. Weinstein later admits they provided <strong>no alternative housing or comparable accommodation</strong> despite the unit’s uninhabitability.
+              <div class="timeline-tag-row">
+                <span class="timeline-tag">Constructive Eviction</span>
+                <span class="timeline-tag">Failure to Accommodate</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">December 5, 2025</div>
+            <div class="timeline-title">Weinstein’s Admissions Served</div>
+            <div class="timeline-body">
+              In response to Supplemental and Continuing Requests for Admission, Weinstein and its insurer make key admissions about promises of lodging, the “unfit” condition of the unit, termination of housing after nonrenewal, and the absence of any alternative accommodations.
+              <div class="timeline-tag-row">
+                <span class="timeline-tag">Discovery Admissions</span>
+                <span class="timeline-tag">Liability Roadmap</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      This page is a summary of admissions and timeline events to help courts, counsel, and advocates understand how Weinstein’s own discovery responses support claims for constructive eviction, disability discrimination, and retaliation.
+    </footer>
+  </div>
+</body>
+</html>
