@@ -1,0 +1,122 @@
+%%{init: {
+  "themeVariables": {
+    "fontSize": "22px",
+    "fontFamily": "sans-serif"
+  }
+}}%%
+flowchart LR
+  %% Family Court Cluster
+  subgraph FAMILY["State Family Court"]
+    FC1["ADA accommodation requested"]
+    FC2["No clear accommodation workflow (or redirected)"]
+    FC3["Proceeding without accommodations"]
+    FC4["Order entered / rights restricted"]
+    FC5["Prefiling hurdle imposed (vexatious litigant)"]
+  end
+  style FAMILY fill:#b3d9ff,stroke:#3399ff,stroke-width:4px,color:#000,font-weight:bold
+
+  %% Appeal Cluster
+  subgraph APPEAL["State Appellate Court"]
+    AP1["Filing access delayed/blocked"]
+    AP2["Case dismissed/stayed for procedural reasons"]
+    AP3["Emergency relief not reachable in time"]
+  end
+  style APPEAL fill:#e4d1fa,stroke:#956ae1,stroke-width:4px,color:#000,font-weight:bold
+
+  %% Justice/JP Court Cluster
+  subgraph JP["Justice Court / JP"]
+    JP1["Repair & Remedy / Retaliation action"]
+    JP2["ADA request not addressed"]
+    JP3["Denied access to evidence/process"]
+    JP4["Case stays unresolved"]
+  end
+  style JP fill:#ffd8b9,stroke:#ff9900,stroke-width:4px,color:#000,font-weight:bold
+
+  %% Federal Court Cluster
+  subgraph FEDDIST["Federal District Court"]
+    FD1["Attempt federal ADA/FHA case"]
+    FD2["No accomodation process or referral"]
+    FD3["Case dismissed on technicality"]
+  end
+  style FEDDIST fill:#b3fbb3,stroke:#008a29,stroke-width:4px,color:#000,font-weight:bold
+
+  %% ADA/Admin Cluster
+  subgraph ADMIN["Administrative / ADA Channels"]
+    AD1["Complaint to county/state ADA office"]
+    AD2["Office refers back or stays silent"]
+    AD3["OCA/agency does not intervene"]
+  end
+  style ADMIN fill:#b6e7ed,stroke:#007d8c,stroke-width:4px,color:#000,font-weight:bold
+
+  %% Practical Gate Cluster
+  subgraph SVP["Practical Gate: Supervised Visitation"]
+    SV1["Supervised visits required"]
+    SV2["Only high-cost / remote supervision options"]
+    SV3["Contact erodes with time"]
+  end
+  style SVP fill:#ffe1ef,stroke:#db40a8,stroke-width:4px,color:#000,font-weight:bold
+
+  %% Choke Points - Decision Diamonds
+  CH1{"Accommodation implemented?"}
+  CH2{"Can file without<br> prefiling permission?"}
+  CH3{"Affordable/nearby supervision<br> available?"}
+  style CH1 fill:#fcf86b,stroke:#c8aa00,stroke-width:4px,color:#000,font-weight:bold
+  style CH2 fill:#fcf86b,stroke:#c8aa00,stroke-width:4px,color:#000,font-weight:bold
+  style CH3 fill:#fcf86b,stroke:#c8aa00,stroke-width:4px,color:#000,font-weight:bold
+
+  %% "Pinball" flow - major paths and barriers
+  FC1 --> CH1
+  CH1 -- "Yes" --> FC4
+  linkStyle 0 stroke:#439943,stroke-width:4px
+  CH1 -- "No" --> FC2
+  linkStyle 1 stroke:#c12c26,stroke-width:4px
+  FC2 --> FC3
+  FC3 --> FC5 -- "Barrier hit" --> CH2
+  style FC5 fill:#fff0f0,stroke:#d93025,stroke-width:4px
+
+  CH2 -- "Yes" --> AP1
+  linkStyle 4 stroke:#43a047,stroke-width:4px
+  CH2 -- "No" --> FC4 -- "Gate" --> AD1
+  linkStyle 5 stroke:#d93025,stroke-width:4px
+
+  AP1 --> AP2
+  AP2 --> AP3 -- "Barrier hit" --> JP1
+  style AP2 fill:#fff0f0,stroke:#d93025,stroke-width:4px
+
+  JP1 --> JP2
+  JP2 --> JP3
+  JP3 --> JP4 -- "Reroute" --> FEDDIST
+  style JP3 fill:#fff7cc,stroke:#e6ac00,stroke-width:4px
+
+  FEDDIST --> FD1
+  FD1 --> FD2
+  FD2 --> FD3 -- "Reroute" --> ADMIN
+  style FD2 fill:#fffde6,stroke:#fbc02d,stroke-width:4px
+
+  ADMIN --> AD1
+  AD1 --> AD2
+  AD2 --> AD3 -- "Barrier hit" --> SV1
+
+  %% Practical Gate: Supervised Visitation
+  SV1 --> CH3
+  CH3 -- "Yes" --> SV2
+  linkStyle 18 stroke:#388e3c,stroke-width:4px
+  CH3 -- "No" --> SV3 -- "Contact erodes" --> endHarm
+  linkStyle 19 stroke:#d93025,stroke-width:4px
+
+  %% Final callout: Why irreparable harm?
+  endHarm["@{ shape: text, label: '`**Why this is irreparable harm now**`\n\n- Rights & contact lost during delays\n- Parent-child bond eroding\n- Inadequate access to housing/services' }"]
+  style endHarm fill:#fffbe7,stroke:#ffc107,stroke-width:5px,color:#000,font-weight:bold
+
+  %% Final callout: Requested relief
+  finalRelief["@{ shape: text, label: '`**Prospective relief requested**`\n\n- Concrete ADA workflow & deadlines\n- Designated point of contact (POC)\n- Interim measures stop erosion' }"]
+  style finalRelief fill:#eeffea,stroke:#00e676,stroke-width:5px,color:#000,font-weight:bold
+
+  SV2 ==> finalRelief
+  endHarm -.-> finalRelief
+
+  %% Legend (not rendered as a visual legend—add if needed)
+
+  %% Node classes for clarity
+  classDef barrier fill:#fff0f0,stroke:#d93025,stroke-width:4px,color:#000;
+  classDef stabilizer fill:#ebffe3,stroke:#43a047,stroke-width:3px,color:#000;
